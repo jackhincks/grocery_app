@@ -12,3 +12,8 @@ export enum SelectedCategory {
   Drinks="drinks",
   Alcohol="alcohol"
 };
+
+export interface GroceryCategory {
+   image: string
+   description: string
+};
