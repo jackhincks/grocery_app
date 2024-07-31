@@ -1,4 +1,4 @@
-export enum SelectedCategory {
+export enum GroceryCategory {
   All="all",
   Pantry = "pantry",
   Seafood = "seafood",
@@ -13,7 +13,15 @@ export enum SelectedCategory {
   Alcohol="alcohol"
 };
 
-export interface GroceryCategory {
+export interface GroceryButton {
    image: string
    description: string
+};
+
+export interface Grocery {
+  id: number,
+  name: string,
+  subcategory: string,
+  image: string,
+  price: number
 };

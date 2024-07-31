@@ -1,19 +1,14 @@
 import { useState } from "react";
-import { SelectedCategory } from "./shared/types";
 import TopNavbar from "./components/topNavbar";
 import CategorySlider from "./components/categorySlider";
+import SearchResults from "./components/search";
 
 function App() {
-  const [selectedCategory, setSelectedCategory] = useState<SelectedCategory>(SelectedCategory.All);
-
   return (
       <div className="app bg-gray-20">
-        <TopNavbar 
-          selectedCategory={selectedCategory}
-          setSelectedCategory={setSelectedCategory}
-        />
+        <TopNavbar />
         <CategorySlider />
-        
+        <SearchResults />
       </div>
   )
 }

@@ -11,10 +11,10 @@ import Steak from '@/assets/Steak.png'
 import Turkey from '@/assets/Turkey.png'
 import Water from '@/assets/Water.png'
 import Wine from '@/assets/Wine.png'
-import { GroceryCategory } from '@/shared/types'
+import { GroceryButton } from '@/shared/types'
 import Options from './options'
 
-const groceries: Array<GroceryCategory> = [
+const groceries: Array<GroceryButton> = [
   {
     image: Food,
     description: "All"
@@ -79,7 +79,7 @@ const CategorySlider = (props: Props) => {
       {/* SIDE SCROLLER */}
       <div className="pt-6 h-40 w-full justify-center overflow-x-auto overflow-y-hidden">
           <ul className="mx-auto w-[1200px] whitespace-nowrap">
-            {groceries.map((item: GroceryCategory, index) => (
+            {groceries.map((item: GroceryButton, index) => (
               <Options 
                 key={`${item.description}-${index}}`}
                 image={item.image}

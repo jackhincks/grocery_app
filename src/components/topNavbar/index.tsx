@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Bars3Icon, ShoppingCartIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import { Bars3Icon, ShoppingCartIcon } from "@heroicons/react/24/solid";
 import Logo2 from '@/assets/Logo2.png'
 import Brand from '@/assets/Brand.png'
 import useMediaQuery from "@/hooks/useMediaQuery";
@@ -15,7 +15,7 @@ const TopNavbar = (props: Props) => {
 
   return (
     <nav>
-      <div className={`${flexBetween} fixed top-0 z-30 w-full pt-6 border-b-2 `}>
+      <div className={`${flexBetween} fixed top-0 z-30 w-full pt-6 border-b-2 bg-white`}>
         <div className={`h-16 flex items-center gap-2 mx-auto w-11/12`}>
           <div className={`flex items-center gap-2`}>
             {/* Left Side of Nav */}
