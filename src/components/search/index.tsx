@@ -1,5 +1,6 @@
 import { groceries } from "@/data/groceries";
 import { GroceryCategory } from "@/shared/types";
+import Add2cart from "./add2cart";
 
 type Props = {}
 
@@ -18,8 +19,12 @@ const SearchResults = (props: Props) => {
           {/* CONTAINERS FOR INDIVIDUAL PRODUCTS */}
           {groceries.map(grocery => (
             <div
-              className="rounded-lg h-46 w-46 m-2 border-2 bg-white hover:cursor-pointer"
+              className="relative rounded-lg h-46 w-46 m-2 border-2 bg-white"
             >
+              {/* ADD TO CART BUTTON */}
+              <div className="absolute top-0 right-0 mr-3 mt-2">
+                <Add2cart />
+              </div>
               {/* IMAGE */}
               <div className="mx-auto my-2 h-32 w-32">
                 <img alt={grocery.image} src={grocery.image} />
