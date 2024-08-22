@@ -1,10 +1,14 @@
 import { ShoppingCartIcon } from "@heroicons/react/16/solid"
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ShopContext } from "@/context/shop-context";
 
-type Props = {}
+type Props = {
+  groceryID: number
+}
 
-const Add2cart = (props: Props) => {
+const Add2cart = ({groceryID}: Props) => {
   const [isHovered, setIsHovered] = useState(false);
+  const { addToCart } = useContext(ShopContext);
 
   return (
     <div 
@@ -13,11 +17,14 @@ const Add2cart = (props: Props) => {
       }
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={() => {
+        addToCart(groceryID);
+      }}
     >
       {isHovered ? (
         <span 
           className="flex items-center justify-center h-full w-full text-white font-bold transition-opacity 
-          duration-300 opacity-0 hover:opacity-100 hover:cursor-pointer"
+          opacity-0 hover:transition-opacity hover:delay-150 hover:opacity-100 hover:cursor-pointer active:bg-gray-100 active:rounded-md"
           >ADD TO CART</span>
       ) : (
         <ShoppingCartIcon className="h-6 w-6 text-white" />

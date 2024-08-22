@@ -1,14 +1,25 @@
 import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import HomeSearch from "@/pages/homeSearch";
+import Cart from "@/pages/cart";
+
 import TopNavbar from "./components/topNavbar";
-import CategorySlider from "./components/categorySlider";
-import SearchResults from "./components/search";
+import ShopContextProvider from "./context/shop-context";
+
 
 function App() {
   return (
       <div className="app bg-gray-20">
-        <TopNavbar />
-        <CategorySlider />
-        <SearchResults />
+        <ShopContextProvider>
+          <Router>
+            <TopNavbar />
+            <Routes>
+              <Route path="/" element={<HomeSearch />} />
+              <Route path="/cart" element={<Cart />} />
+            </Routes>
+          </Router>
+        </ShopContextProvider>
       </div>
   )
 }
