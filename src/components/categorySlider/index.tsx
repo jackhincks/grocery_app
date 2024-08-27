@@ -77,8 +77,8 @@ const CategorySlider = (props: Props) => {
       className="mt-[90px]"
     >
       {/* SIDE SCROLLER */}
-      <div className="pt-6 h-40 w-full justify-center overflow-x-auto overflow-y-hidden">
-          <ul className="mx-auto w-[1200px] whitespace-nowrap">
+      <div className="pt-6 h-40 w-full justify-center">
+          <ul className="mx-auto w-[80%] whitespace-nowrap overflow-x-scroll overflow-y-hidden bg-primary-100 shadow-2xl">
             {groceries.map((item: GroceryButton, index) => (
               <Options 
                 key={`${item.description}-${index}}`}

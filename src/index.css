@@ -4,6 +4,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  /* Hide the spinners only for inputs with the .hide-spin class */
+  .hide-spin::-webkit-outer-spin-button,
+  .hide-spin::-webkit-inner-spin-button {
+      @apply appearance-none;
+      margin: 0;
+  }
+
+  .hide-spin {
+      @apply appearance-none;
+  }
+}
+
 html,
 body,
 #root,

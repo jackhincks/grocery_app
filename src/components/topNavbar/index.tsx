@@ -6,19 +6,28 @@ import Brand from '@/assets/Brand.png'
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { ShopContext } from "@/context/shop-context";
 import SearchBar from "./searchBar";
+import Modal from "../cartModal";
+import Cart from "../cart";
 
 type Props = {}
 
 const TopNavbar = (props: Props) => {
   const flexBetween = "flex items-center justify-between";
-  const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false); 
+  const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false);
+  
+  // cart modal hook
+  const [ seeCart, setSeeCart ] = useState<boolean>(false);
+  const handleOpenCart = () => setSeeCart(true);
+  const handleCloseCart = () => setSeeCart(false);
+
+
   // useMediaQuery is a hook that returns true if min-width is at least 1060px, false if not. 
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
   const { cartItems } = useContext(ShopContext); 
 
   return (
     <nav>
-      <div className={`${flexBetween} fixed top-0 z-30 w-full pt-6 border-b-2 bg-white`}>
+      <div className={`${flexBetween} fixed top-0 z-30 w-full pt-6 border-b-2 bg-primary-100`}>
         <div className={`h-16 flex items-center gap-2 mx-auto w-11/12`}>
           <div className={`flex items-center gap-2`}>
             {/* Left Side of Nav */}
@@ -57,15 +66,20 @@ const TopNavbar = (props: Props) => {
             </Link>
           </div>
 
-          {/* CART */}
-          <div className="relative ml-2">
-            <Link to="/cart">
-              <ShoppingCartIcon className="h-8 w-8 text-black" />
-            </Link>
+          {/* CART ICON */}
+          <div className="relative ml-4">
+            <ShoppingCartIcon 
+              className="h-8 w-8 text-black hover:cursor-pointer"
+              onClick={handleOpenCart}
+            />
             <div className="absolute flex items-center justify-center rounded-full w-4 h-4 bg-primary-500 text-xs text-white -top-2 -right-2">
               {Object.keys(cartItems).length}
             </div>
           </div>
+          {/* CART POP UP MODAL */}
+          <Modal isOpen={seeCart} onClose={handleCloseCart}>
+            <Cart />
+          </Modal>
         </div>
       </div>
     </nav>

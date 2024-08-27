@@ -35,4 +35,5 @@ export interface CartModifier {
   cartItems: Cart;
   addToCart: (productID: number) => void;
   removeFromCart: (productID: number) => void;
+  deleteFromCart: (productID: number) => void;
 }

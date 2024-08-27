@@ -16,7 +16,6 @@ function App() {
             <TopNavbar />
             <Routes>
               <Route path="/" element={<HomeSearch />} />
-              <Route path="/cart" element={<Cart />} />
             </Routes>
           </Router>
         </ShopContextProvider>
