@@ -1,17 +1,26 @@
+import { GroceryCategory } from "@/shared/types"
 
 type Props = {
   image: string,
-  description: string
+  description: string,
+  category: GroceryCategory,
+  handleCategoryClick: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-const Options = ({ image, description }: Props) => {
+const Options = ({ image, description, category, handleCategoryClick }: Props) => {
   return (
-    <div className="relative mx-5 inline-block h-14 w-14">
-      <li className="">
-        <img alt={`${image}`} src={image} className="hover:-rotate-12 hover:cursor-pointer"/>
-        <div className="font-bold text-black text-center mx-auto text-wrap">{description}</div>
+    
+      <li className="flex-none flex-col justify-center items-center h-20 w-20 mx-4">
+        <button 
+          className="flex mx-auto" 
+          value={category}
+          onClick={handleCategoryClick}
+        >
+          <img alt={`${image}`} src={image} className="h-[48px] w-[48px] mx-auto hover:-rotate-12 hover:cursor-pointer"/>
+        </button>
+        <div className="font-bold text-black text-center">{description}</div>
       </li>
-    </div>
+    
   )
 }
 

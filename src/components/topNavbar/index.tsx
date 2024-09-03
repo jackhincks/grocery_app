@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Bars3Icon, ShoppingCartIcon } from "@heroicons/react/24/solid";
 import Logo2 from '@/assets/Logo2.png'
@@ -24,6 +24,11 @@ const TopNavbar = (props: Props) => {
   // useMediaQuery is a hook that returns true if min-width is at least 1060px, false if not. 
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
   const { cartItems } = useContext(ShopContext); 
+
+  // shopping cart wiggle when cart changes
+  useEffect(() => {
+    
+  })
 
   return (
     <nav>

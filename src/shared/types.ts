@@ -2,7 +2,7 @@ export enum GroceryCategory {
   All="all",
   Pantry = "pantry",
   Seafood = "seafood",
-  BakedGoods="bakedgoods",
+  BakedGoods="bakedGoods",
   Dairy="dairy",
   Produce="produce",
   Deli="deli",
@@ -10,12 +10,14 @@ export enum GroceryCategory {
   Meat="meat",
   Spices="spices",
   Drinks="drinks",
-  Alcohol="alcohol"
+  Alcohol="alcohol",
+  Coffee="coffee"
 };
 
 export interface GroceryButton {
    image: string
    description: string
+   category: GroceryCategory
 };
 
 export interface Grocery {
