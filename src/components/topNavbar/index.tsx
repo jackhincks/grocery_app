@@ -9,9 +9,11 @@ import SearchBar from "./searchBar";
 import Modal from "../cartModal";
 import Cart from "../cart";
 
-type Props = {}
+type Props = {
+  handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
-const TopNavbar = (props: Props) => {
+const TopNavbar = ({ handleInputChange }: Props) => {
   const flexBetween = "flex items-center justify-between";
   const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false);
   
@@ -50,7 +52,7 @@ const TopNavbar = (props: Props) => {
           
           {/* SEARCH BAR */}
           <div className="flex-col flex-grow ml-12 py-2 w-[50%] items-center">
-            <SearchBar />
+            <SearchBar handleInputChange={handleInputChange} />
           </div>
 
           {/* LOGIN / SIGNUP */}

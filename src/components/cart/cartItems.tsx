@@ -13,7 +13,7 @@ const CartItems = (props: Props) => {
     });
     
   return (
-    <div className="grid grid-cols-1">
+    <div className="grid grid-cols-1 max-h-[50vh] overflow-y-auto">
             {Object.entries(cartItems).map(([productID, quantity]) => (
               <div className="flex justify-center items-start p-2 gap-2" id={productID}>
                 {/* PRODUCT IMAGE */}
