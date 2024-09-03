@@ -1,7 +1,7 @@
 <img align="center" width="900" alt="app_homepage" src="https://github.com/user-attachments/assets/4d8e787a-7c8c-46d4-bdff-311ee50558fa">
 
 # All The Things - Grocery Delivery Application
-All the Things is a simple application for a hypothetical grocery delivery company. The app allows users to browse a selection of grocery items, filter the items by category, filter the items via search input, and ultimately view their shopping cart.
+All the Things is a simple application for a hypothetical grocery delivery company. The app allows users to browse a selection of grocery items, filter the items by category, filter the items via search input, and update/view their shopping cart.
 
 ## How to Run
 ### Prerequisites
