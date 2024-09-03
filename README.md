@@ -38,5 +38,6 @@ I began with creating prototypes of what I wanted the website to look like, draw
 - Improved UI for "Category Slider".
 - Ability of application to maintain Shopping Cart state after browser refresh.
 - Quantity selector for "Add To Cart" functionality -- currently, can only add 1 incremental quantity to cart per click.
-- Link MySQL database to frontend via Flask REST API.
+- Migrate static grocery data to a MySQL database.
+- Develop REST API with Flask to facilitate Frontend/DB interaction.
 - AUTH0 Login and Sign Up capabilities.
