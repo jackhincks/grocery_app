@@ -8,7 +8,6 @@ All the Things is a simple application for a hypothetical grocery delivery compa
 Before you begin, ensure you have the following installed on your machine:
 
 - [Node.js](https://nodejs.org/) (version 18.x or higher)
-- [Git](https://git-scm.com/)
 
 ### Installation
 
@@ -36,7 +35,8 @@ I began with creating prototypes of what I wanted the website to look like, draw
 
 ## In Progress Application Improvements
 - Improved UI for "Category Slider".
-- Ability of application to maintain Shopping Cart state after browser refresh.
+- Functionality for "3 line" drop down menu.
+- Ability to maintain Shopping Cart state after browser refresh.
 - Quantity selector for "Add To Cart" functionality -- currently, can only add 1 incremental quantity to cart per click.
 - Migrate static grocery data to a MySQL database.
 - Develop REST API with Flask to facilitate Frontend/DB interaction.
