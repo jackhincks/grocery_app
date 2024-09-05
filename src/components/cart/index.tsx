@@ -1,7 +1,3 @@
-import React, { useContext } from 'react'
-import { ShopContext } from '@/context/shop-context'
-import { groceries } from '@/data/groceries'
-import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/16/solid'
 import CartItems from './cartItems'
 import CartTotal from './cartTotal'
 

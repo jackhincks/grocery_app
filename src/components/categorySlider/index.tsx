@@ -13,6 +13,7 @@ import Water from '@/assets/Water.png'
 import Wine from '@/assets/Wine.png'
 import { GroceryButton, GroceryCategory } from '@/shared/types'
 import Options from './options'
+import { useEffect, useRef } from 'react'
 
 const groceries: Array<GroceryButton> = [
   {
@@ -87,13 +88,42 @@ type Props = {
 }
 
 const CategorySlider = ({ handleCategoryClick }: Props) => {
+
+  const scrollContainerRef = useRef<HTMLUListElement | null>(null);
+
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current;
+
+    const handleWheelEvent = (event: WheelEvent) => {
+      
+      // Prevent default vertical scroll only if scroll is an option
+      if (scrollContainer && (scrollContainer.scrollWidth > scrollContainer.clientWidth)) {
+        event.preventDefault(); 
+        scrollContainer.scrollLeft += event.deltaY;
+      }
+    };
+
+    if (scrollContainer) {
+      scrollContainer.addEventListener('wheel', handleWheelEvent, { passive: false });
+    }
+
+    // Cleanup function to remove event listener when component unmounts
+    return () => {
+      if (scrollContainer) {
+        scrollContainer.removeEventListener('wheel', handleWheelEvent);
+      }
+    };
+  }, []);
+
   return (
     <section
       className="mt-[90px]"
     >
       {/* SIDE SCROLLER */}
       <div className="pt-6 h-40 w-full justify-center">
-          <ul className="flex justify-center mx-auto w-[80%] h-20 whitespace-nowrap overflow-x-scroll overflow-y-hidden bg-primary-100 shadow-2xl">
+          <ul className="flex justify-start mx-auto w-[80%] h-[90px] whitespace-nowrap overflow-x-auto overflow-y-hidden bg-primary-100 shadow-2xl"
+            ref={scrollContainerRef}
+          >
             {groceries.map((item: GroceryButton, index) => (
               <Options 
                 key={`${item.description}-${index}}`}

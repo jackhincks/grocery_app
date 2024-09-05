@@ -1,18 +1,18 @@
 import React from 'react';
 import { XMarkIcon } from '@heroicons/react/16/solid';
+import Cart from '../cart';
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  children: React.ReactNode;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90"
       onClick={onClose}
     >
       <div 
@@ -25,7 +25,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
         >
           <XMarkIcon className="h-6 w-6" />
         </button>
-        {children}
+        <Cart />
       </div>
     </div>
   );
