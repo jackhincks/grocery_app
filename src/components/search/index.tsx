@@ -22,7 +22,7 @@ const SearchResults = (props: Props) => {
               className="relative rounded-lg h-46 w-46 m-2 border-2 bg-white"
             >
               {/* ADD TO CART BUTTON */}
-              <div className="absolute top-0 right-0 mr-3 mt-2">
+              <div className="absolute top-0 -right-6 mr-3 mt-2">
                 <Add2cart />
               </div>
               {/* IMAGE */}
