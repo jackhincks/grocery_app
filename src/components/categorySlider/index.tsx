@@ -11,79 +11,96 @@ import Steak from '@/assets/Steak.png'
 import Turkey from '@/assets/Turkey.png'
 import Water from '@/assets/Water.png'
 import Wine from '@/assets/Wine.png'
-import { GroceryButton } from '@/shared/types'
+import { GroceryButton, GroceryCategory } from '@/shared/types'
 import Options from './options'
 
 const groceries: Array<GroceryButton> = [
   {
     image: Food,
-    description: "All"
+    description: "All",
+    category: GroceryCategory.All
   },
   {
     image: Bread,
-    description: "Bakery"
+    description: "Bakery",
+    category: GroceryCategory.BakedGoods
   },
   {
     image: Broccoli,
-    description: "Produce"
+    description: "Produce",
+    category: GroceryCategory.Produce
   },
   {
     image: Cafe,
-    description: "Coffee"
+    description: "Coffee",
+    category: GroceryCategory.Coffee
   },
   {
     image: Fish,
-    description: "Seafood"
+    description: "Seafood",
+    category: GroceryCategory.Seafood
   },
   {
     image: IceCream,
-    description: "Frozen"
+    description: "Frozen",
+    category: GroceryCategory.Frozen
   },
   {
     image: Ingredients,
-    description: "Pantry"
+    description: "Pantry",
+    category: GroceryCategory.Pantry
   },
   {
     image: Milk,
-    description: "Dairy"
+    description: "Dairy",
+    category: GroceryCategory.Dairy
   },
   {
     image: Salt,
-    description: "Spices"
+    description: "Spices",
+    category: GroceryCategory.Spices
   },
   {
     image: Steak,
-    description: "Meat"
+    description: "Meat",
+    category: GroceryCategory.Meat
   },
   {
     image: Turkey,
-    description: "Deli"
+    description: "Deli",
+    category: GroceryCategory.Deli
   },
   {
     image: Water,
-    description: "Beverages"
+    description: "Drinks",
+    category: GroceryCategory.Drinks
   },
   {
     image: Wine,
-    description: "Alcohol"
+    description: "Alcohol",
+    category: GroceryCategory.Alcohol
   }
 ];
 
-type Props = {}
+type Props = {
+  handleCategoryClick: (event: React.MouseEvent<HTMLButtonElement>) => void
+}
 
-const CategorySlider = (props: Props) => {
+const CategorySlider = ({ handleCategoryClick }: Props) => {
   return (
     <section
       className="mt-[90px]"
     >
       {/* SIDE SCROLLER */}
-      <div className="pt-6 h-40 w-full justify-center overflow-x-auto overflow-y-hidden">
-          <ul className="mx-auto w-[1200px] whitespace-nowrap">
+      <div className="pt-6 h-40 w-full justify-center">
+          <ul className="flex justify-center mx-auto w-[80%] h-20 whitespace-nowrap overflow-x-scroll overflow-y-hidden bg-primary-100 shadow-2xl">
             {groceries.map((item: GroceryButton, index) => (
               <Options 
                 key={`${item.description}-${index}}`}
                 image={item.image}
                 description={item.description}
+                category={item.category}
+                handleCategoryClick={handleCategoryClick}
               />
             ))}
 

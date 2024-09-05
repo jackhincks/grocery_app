@@ -1,30 +1,43 @@
-# React + TypeScript + Vite
+<img align="center" width="900" alt="app_homepage" src="https://github.com/user-attachments/assets/4d8e787a-7c8c-46d4-bdff-311ee50558fa">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# All The Things - Grocery Delivery Application
+All the Things is a simple application for a hypothetical grocery delivery company. The app allows users to browse a selection of grocery items, filter the items by category, filter the items via search input, and update/view their shopping cart.
 
-Currently, two official plugins are available:
+## How to Run
+### Prerequisites
+Before you begin, ensure you have the following installed on your machine:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Node.js](https://nodejs.org/) (version 18.x or higher)
 
-## Expanding the ESLint configuration
+### Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Follow these steps to set up the project on your local machine:
 
-- Configure the top-level `parserOptions` property like this:
+#### 1. Clone the Repository
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+Open your terminal and run the following command to clone the repository: <br><br>
+```git clone https://github.com/jackhincks/grocery_app.git```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+#### 2. Navigate to the Project Directory
+#### 3. Install Dependencies
+If using yarn, enter ```yarn install``` into the command line while in the root project directory. <br>
+If using npm, enter ```npm install``` into the command line while in the root project directory.  <br>
+#### 4. Run the Development Server
+If using yarn, enter ```yarn dev``` into the command line while in the root project directory. <br>
+If using npm, enter ```npm run dev``` into the command line while in the root project directory. <br>
+
+
+## How It's Made
+Tech used: React, HTML, Tailwind CSS, TypeScript <br>
+I started this project to enhance my front-end development skills. I created several front-end applications in my classwork at Oregon State with the help of starter code, but wanted to build an application from the ground-up.  I had experience using JavaScript, HTML, and CSS, but decided to utilize TypeScript and Tailwind CSS for this project given the growing popularity of TypeScript and simplicity of Tailwind CSS.
+
+I began with creating prototypes of what I wanted the website to look like, drawing inspiration from real online food delivery websites. Then, I built out the general look in React using Tailwind CSS. After the static layout and design was in place, I worked on adding dynamic functionality to the different components. The items were given dynamic "Add To Cart" buttons, the browse items section can be dynamically updated by clicking the category icons or adding text to the search bar. The shopping cart icon displays the quantity of items in the cart at any given time, and when clicked, displays a pop up of the shopping cart.
+
+## In Progress Application Improvements
+- Improved UI for "Category Slider".
+- Functionality for "3 line" drop down menu.
+- Ability to maintain Shopping Cart state after browser refresh.
+- Quantity selector for "Add To Cart" functionality -- currently, can only add 1 incremental quantity to cart per click.
+- Migrate static grocery data to a MySQL database.
+- Develop REST API with Flask to facilitate Frontend/DB interaction.
+- AUTH0 Login and Sign Up capabilities.
