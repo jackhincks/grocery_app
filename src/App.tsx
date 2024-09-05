@@ -37,11 +37,8 @@ function App() {
     }
 
     if (selectedCategory) {
-      if (selectedCategory === GroceryCategory.All) {
-        
-      } 
-      else {
-      filteredProducts = filteredProducts.filter(product => product.subcategory === selectedCategory)
+      if (selectedCategory !== GroceryCategory.All) {
+        filteredProducts = filteredProducts.filter(product => product.subcategory === selectedCategory)
       }
     }
 
