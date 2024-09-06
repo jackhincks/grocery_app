@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomeSearch from "@/pages/homeSearch";
 import { groceries } from "./data/groceries";
 
-import TopNavbar from "./components/topNavbar";
+import TopNavbar from "./components/TopNavbar";
 import ShopContextProvider from "./context/shop-context";
 import { Grocery, GroceryCategory } from "./shared/types";
 

@@ -8,7 +8,7 @@ const SignUp = (props: Props) => {
     <div>
       <Link
         to="/signup"
-        className="rounded-md bg-gray-100 text-black font-bold px-6 py-2 hover:bg-primary-500 hover:text-white cursor-pointer text-nowrap"
+        className="rounded-md bg-gray-100 text-black font-bold px-3 py-2 text-xs hover:bg-primary-500 hover:text-white cursor-pointer text-nowrap"
       >
         Sign Up
       </Link>

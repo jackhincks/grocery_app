@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import { Cart, CartModifier } from "@/shared/types"
+import React from "react";
 
 // this is bad news but not sure on another work around. This seems less messy than making a "fake" CartModifier object
 // prior to loading in the properties below within ShopContextProvider.

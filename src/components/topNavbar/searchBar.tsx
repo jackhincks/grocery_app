@@ -1,4 +1,5 @@
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
+import React from 'react';
 
 type Props = {
   handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;

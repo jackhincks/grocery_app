@@ -1,8 +1,8 @@
 import { useState } from "react";
-import SearchBar from "./searchBar";
-import Modal from "../cartModal";
-import Login from "./login";
-import SignUp from "./signup";
+import SearchBar from "./SearchBar";
+import CartModal from "../CartModal";
+import Login from "./Login";
+import SignUp from "./Signup";
 import ShoppingCartButton from "./ShoppingCartButton";
 import ThreeBarMenu from "./ThreeBarMenu";
 import NavBarLogo from "./NavBarLogo";
@@ -34,7 +34,7 @@ const TopNavbar = ({ handleInputChange }: Props) => {
           <ShoppingCartButton handleOpenCart={handleOpenCart} />.
           </div>
           {/* CART POP UP MODAL */}
-          <Modal isOpen={seeCart} onClose={handleCloseCart} />
+          <CartModal isOpen={seeCart} onClose={handleCloseCart} />
         </div>
       </div>
     </nav>
