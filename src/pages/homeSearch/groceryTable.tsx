@@ -1,16 +1,18 @@
 import { Grocery } from '@/shared/types'
 import Add2cart from './add2cart'
 
+const USDollar = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  });
+
+const imagePath = '../../src/assets/groceryImages'
+
 type Props = {
-  groceries: Array<Grocery>
+  groceries: Grocery[]
 }
 
 const GroceryTable = ({ groceries }: Props) => {
-  const USDollar = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    });
-
   return (
     <>
       {/* CONTAINERS FOR INDIVIDUAL PRODUCTS */}
@@ -26,7 +28,7 @@ const GroceryTable = ({ groceries }: Props) => {
           </div>
           {/* IMAGE */}
           <div className="mx-auto my-2 h-32 w-32">
-            <img alt={grocery.image} src={grocery.image} />
+            <img alt={grocery.image} src={`${imagePath}/${grocery.image}`} />
           </div>
           {/* PRICE */}
           <div className="px-2 text-lg font-bold text-black">

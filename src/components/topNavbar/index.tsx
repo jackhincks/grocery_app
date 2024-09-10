@@ -9,6 +9,7 @@ import NavBarLogo from "./NavBarLogo";
 
 type Props = {
   handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  
 }
 
 const TopNavbar = ({ handleInputChange }: Props) => { 
