@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import axios from 'axios'; -- START HERE
 
 import HomeSearch from "@/pages/homeSearch";
 import TopNavbar from "./components/TopNavbar";
