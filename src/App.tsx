@@ -10,7 +10,7 @@ import { Grocery, GroceryCategory } from "./shared/types";
 
 function App() {
   const [ selectedCategory, setSelectedCategory ] = useState<GroceryCategory>(GroceryCategory.All);
-  const [groceryData, setGroceryData] = useState<Grocery[]>([])
+  const [ groceryData, setGroceryData ] = useState<Grocery[]>([])
 
   // input filter - used to monitor search bar
   const [ query, setQuery ] = useState("");

@@ -9,7 +9,7 @@ import NavBarLogo from "./NavBarLogo";
 
 type Props = {
   handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  
+
 }
 
 const TopNavbar = ({ handleInputChange }: Props) => { 
@@ -32,7 +32,7 @@ const TopNavbar = ({ handleInputChange }: Props) => {
           <Login />
           <SignUp />
           {/* SHOPPING CART ICON */}
-          <ShoppingCartButton handleOpenCart={handleOpenCart} />.
+          <ShoppingCartButton handleOpenCart={handleOpenCart} />
           </div>
           {/* CART POP UP MODAL */}
           <CartModal isOpen={seeCart} onClose={handleCloseCart} />

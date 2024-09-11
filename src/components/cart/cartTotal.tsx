@@ -1,6 +1,7 @@
 import { ShopContext } from '@/context/shop-context';
-import { groceries } from '@/data/groceries';
 import React, { useContext } from 'react'
+
+const TAXRATE: number = .11
 
 type Props = {}
 
@@ -11,12 +12,15 @@ const cartTotal = (props: Props) => {
     currency: 'USD',
     });
 
-  let total:number = 0;
+  let subtotal:number = 0;
 
-  Object.entries(cartItems).forEach(([productID, quantity])=> {
-    const productPrice:number = (groceries[Number(productID) - 1].price);
-    total += (productPrice * quantity);
+  cartItems.forEach((cartItem)=> {
+    const productPrice:number = (cartItem.item.price);
+    subtotal += (productPrice * cartItem.quantity);
   })
+
+  const tax: number = subtotal * TAXRATE
+  const total: number = subtotal + tax
 
   return (
     <div className="border-t-2 border-black">
@@ -24,11 +28,11 @@ const cartTotal = (props: Props) => {
         className="grid grid-cols-2 mt-2 ml-[65%] text-black"
       >
         <span>Subtotal:</span>
-        <span>{USDollar.format(total)}</span>
+        <span>{USDollar.format(subtotal)}</span>
         <span>Tax:</span>
-        <span>{USDollar.format(total*.11)}</span>
+        <span>{USDollar.format(tax)}</span>
         <span className="font-bold">Total:</span>
-        <span className="font-bold">{USDollar.format(total*1.11)}</span>
+        <span className="font-bold">{USDollar.format(total)}</span>
       </div>
       {/* CHECKOUT BUTTON */}
       <button 

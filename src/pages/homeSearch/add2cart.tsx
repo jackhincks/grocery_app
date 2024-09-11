@@ -1,12 +1,13 @@
 import { ShoppingCartIcon } from "@heroicons/react/16/solid"
 import { useContext, useState } from "react";
 import { ShopContext } from "@/context/shop-context";
+import { Grocery } from "@/shared/types";
 
 type Props = {
-  groceryID: number
+  grocery: Grocery
 }
 
-const Add2cart = ({groceryID}: Props) => {
+const Add2cart = ({ grocery }: Props) => {
   const [isHovered, setIsHovered] = useState(false);
   const { addToCart } = useContext(ShopContext);
 
@@ -18,7 +19,7 @@ const Add2cart = ({groceryID}: Props) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => {
-        addToCart(groceryID);
+        addToCart(grocery);
       }}
     >
       {isHovered ? (

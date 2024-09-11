@@ -28,14 +28,19 @@ export interface Grocery {
   price: number
 };
 
+export interface GroceryCart {
+  item: Grocery,
+  quantity: number
+}
+
 // This allows a Cart type object to have a productID/attr as a number and value as a number.
 export interface Cart {
   [productID: number]: number;
 }
 
 export interface CartModifier {
-  cartItems: Cart;
-  addToCart: (productID: number) => void;
-  removeFromCart: (productID: number) => void;
-  deleteFromCart: (productID: number) => void;
+  cartItems: GroceryCart[];
+  addToCart: (grocery: Grocery) => void;
+  removeFromCart: (grocery: Grocery) => void;
+  deleteFromCart: (grocery: Grocery) => void;
 }

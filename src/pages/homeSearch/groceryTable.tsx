@@ -19,11 +19,12 @@ const GroceryTable = ({ groceries }: Props) => {
       {groceries.map(grocery => (
         <div
           className="relative rounded-lg h-46 w-46 m-2 border-2 bg-white"
+          key={grocery.id}
         >
           {/* ADD TO CART BUTTON */}
           <div className="absolute top-0 right-0 mr-3 mt-2">
             <Add2cart 
-              groceryID={grocery.id}
+              grocery={grocery}
             />
           </div>
           {/* IMAGE */}
