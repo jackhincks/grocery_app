@@ -1,0 +1,63 @@
+
+
+services:
+### MySQL Container
+  mysql:
+    container_name: att_mysql
+    image: mysql:8.0.19
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: groceries
+      MYSQL_USER: groceriesAdmin
+      MYSQL_PASSWORD: pass
+      MYSQL_PORT: 3306
+    volumes:
+      - ./db-init:/docker-entrypoint-initdb.d
+    networks:
+      - att-network
+    ports:
+      - 3306:3306
+### Flask Container
+  backend:
+    container_name: att_backend
+    build:
+      context: ./grocery_app_backend
+      dockerfile: Dockerfile
+    environment:
+      DB_DATABASE: groceries
+      DB_USER: groceriesAdmin
+      DB_HOST: mysql
+      DB_PASSWORD: pass
+      DB_PORT: 3306
+    ports:
+      - "5001:5001"
+    networks:
+      - att-network
+    depends_on:
+      - mysql
+### Frontend
+  frontend:
+    container_name: att_frontend
+    build:
+      context: grocery_app
+      dockerfile: Dockerfile
+    ports:
+      - 5173:5173
+    stdin_open: true
+    environment:
+      VITE_BACKEND_HOST: localhost
+      VITE_BACKEND_PORT: 5001
+    volumes:
+      - ./grocery_app:/usr/src/app
+      - /usr/src/app/node_modules
+    restart: always
+    networks:
+      - att-network
+    depends_on:
+      - backend
+    
+
+networks:
+  att-network:
+    driver: bridge
