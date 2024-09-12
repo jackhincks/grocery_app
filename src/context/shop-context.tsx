@@ -18,7 +18,6 @@ const ShopContextProvider = (props: Props) => {
     setCartItems((prev) => {
       // finds list index of item if it is already in cart, or -1 if not in cart
       const oldCartIndex = prev.findIndex((cartItem) => cartItem && cartItem.item.id === grocery.id);
-      debugger;
       if (oldCartIndex !== -1) {
         // Gets current quantity
         const oldQuantity = prev[oldCartIndex].quantity
