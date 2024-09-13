@@ -24,15 +24,19 @@ git clone https://github.com/jackhincks/grocery_app.git
 #### 2. Navigate to the Project Directory Root <br><br>
 
 #### 3. Build Docker Images & Run Containers
-On command line, run 
+On command line, run the below command to build the Docker images and run the frontend, backend, and DB containers.
 ```
 docker-compose up -d --build
 ```
 
 #### 4. Access the Application
-In the browser of your choice, navigate to http://localhost:5173. <br>
+In the browser of your choice, navigate to http://localhost:5173. <br><br>
 
-
+#### 5. Shutdown the Application
+When finished with the application, run the below command to stop and delete the containers.
+```
+docker-compose down
+```
 
 ## How It's Made
 **Tech used**: React, HTML, Tailwind CSS, TypeScript, Python, Flask, SQL, Docker, React Testing Library, JSDOM, Vite <br><br>
