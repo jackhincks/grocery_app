@@ -35,7 +35,7 @@ In the browser of your choice, navigate to http://localhost:5173. <br>
 
 
 ## How It's Made
-Tech used: React, HTML, Tailwind CSS, TypeScript, Python, Flask, SQL, Docker <br>
+**Tech used**: React, HTML, Tailwind CSS, TypeScript, Python, Flask, SQL, Docker, React Testing Library, JSDOM, Vite <br><br>
 I started this project to build my first full-stack application from the ground up. I created several applications in my classwork at Oregon State with the help of starter code, but wanted to build an application starting from nothing.  I had experience using JavaScript, HTML, and CSS, but decided to utilize TypeScript and Tailwind CSS for this project given the growing popularity of TypeScript and ease-of-use of Tailwind CSS.
 
 I began with creating prototypes of what I wanted the front-end to look like, drawing inspiration from real online food delivery websites. Then, I built out the general look in React using Tailwind CSS. After the static layout and design was in place, I worked on adding dynamic functionality to the different components. The items were given dynamic "Add To Cart" buttons, the browse items section can be dynamically updated by clicking the category icons or adding text to the search bar. The shopping cart icon displays the quantity of items in the cart at any given time, and when clicked, displays a pop up of the shopping cart.
