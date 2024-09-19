@@ -22,6 +22,7 @@ git clone https://github.com/jackhincks/grocery_app.git
 ```
 
 #### 2. Navigate to the Project Directory Root <br><br>
+Within the docker-compose.yml file, navigate to the FLASK CONTAINER and enter a SECRET_KEY utilizing the Unix command provided (or enter your own key). This is used for session management.
 
 #### 3. Build Docker Images & Run Containers
 On command line, run the below command to build the Docker images and run the frontend, backend, and DB containers.
