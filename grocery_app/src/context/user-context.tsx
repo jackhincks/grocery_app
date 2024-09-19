@@ -26,7 +26,7 @@ const UserContextProvider = (props: Props) => {
         setUser(res.data)
       }
       catch (error) {
-        console.log("Not authenticated")
+        console.log("Error fetching user.")
       }
       finally {
         setLoading(false);
@@ -45,7 +45,7 @@ const UserContextProvider = (props: Props) => {
       setUser(null);
       console.log('works')
       console.log(user)
-      window.location.href = "/"
+      window.location.reload();
     } 
     catch (error) {
       console.log(`${error}`)

@@ -12,7 +12,7 @@ db = SQLAlchemy()
 
 def create_app():
   app = Flask(__name__)
-  CORS(app, supports_credentials=True, origins=[r"http://localhost:5173/*", r"http://frontend:5173/*"])
+  CORS(app, supports_credentials=True)
 
   # Configure Flask App utilizing PyMySql
   app.config.from_object(ApplicationConfig)

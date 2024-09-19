@@ -35,7 +35,7 @@ const TopNavbar = ({ handleInputChange }: Props) => {
     setSignInOrUp(event.currentTarget.value as AuthMode)
   }
 
-  const { loading, user, setAuthorizedUser, signOutAuthorizedUser } = useContext(UserContext);
+  const { loading, user } = useContext(UserContext);
 
 
   return (
@@ -48,7 +48,6 @@ const TopNavbar = ({ handleInputChange }: Props) => {
           </div>
           <SearchBar handleInputChange={handleInputChange} />
           <div className="flex gap-2">
-            {/* Need to implement loading state as frontend fetches signed in user info */}
             {loading ? '' : (user ? <UserButton /> : (
               <>
                 <LoginButton handleOpenAuthModal={handleOpenAuthModal} handleSignInSelect={handleSignInSelect}/>

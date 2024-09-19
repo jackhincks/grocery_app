@@ -14,7 +14,7 @@ const UserButton = (props: Props) => {
     setIsDropdownOpen(!isDropdownOpen)
   }
 
-  const { user, setAuthorizedUser, signOutAuthorizedUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   return (
     <>

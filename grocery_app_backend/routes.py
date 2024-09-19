@@ -28,16 +28,19 @@ def register_routes(app: Flask, db: SQLAlchemy):
     user_id = session.get("user_id")
 
     if not user_id:
-      return jsonify({"error": "Unauthorized"}), 401
+      return jsonify(None), 200
     
     user: User = User.query.filter_by(user_id=user_id).first()
 
-    return jsonify({
-      "userID": user.user_id,
-      "userEmail": user.email,
-      "userFN": user.fname,
-      "userLN": user.lname
-    })
+    if user:
+      return jsonify({
+        "userID": user.user_id,
+        "userEmail": user.email,
+        "userFN": user.fname,
+        "userLN": user.lname
+      })
+    else:
+      return jsonify(None), 404
   
   @app.route("/signup", methods=["POST"])
   def register_user():
