@@ -3,8 +3,8 @@ import CategorySlider from "@/components/categorySlider";
 import GroceryTable from "./groceryTable";
 import { useEffect } from "react";
 
-const apiHost = import.meta.env.VITE_BACKEND_HOST;
-const apiPort = import.meta.env.VITE_BACKEND_PORT;
+const apiHost = import.meta.env.VITE_BACKEND_HOST || 'localhost';
+const apiPort = import.meta.env.VITE_BACKEND_PORT || 5001;
 const filePath = '';
 
 const fetchGroceries = async (query: string, category: GroceryCategory, setGroceryData: React.Dispatch<React.SetStateAction<Grocery[]>>) => {
@@ -29,7 +29,7 @@ type Props = {
   testCategory: GroceryCategory
 }
 
-const HomeSearch = ({ groceryData, setGroceryData, handleCategoryClick, testQuery, testCategory }: Props) => {
+const LandingPage = ({ groceryData, setGroceryData, handleCategoryClick, testQuery, testCategory }: Props) => {
   useEffect(() => {
     fetchGroceries(testQuery, testCategory, setGroceryData);
   }, [testQuery, testCategory]);
@@ -50,4 +50,4 @@ const HomeSearch = ({ groceryData, setGroceryData, handleCategoryClick, testQuer
 };
 
 
-export default HomeSearch
+export default LandingPage

@@ -1,6 +1,10 @@
 from app import db
 from sqlalchemy.orm import relationship
 from dataclasses import dataclass
+from uuid import uuid4
+
+def get_uuid():
+  return uuid4().hex
 
 @dataclass
 class Item(db.Model):
@@ -25,3 +29,13 @@ class Subcategory(db.Model):
   name:str = db.Column(db.String(100), nullable=False)
 
   items = relationship('Item', back_populates='subcategories')
+
+@dataclass
+class User(db.Model):
+  __tablename__ = 'users'
+
+  user_id:str = db.Column(db.String(32), primary_key=True, unique=True, default=get_uuid)
+  email:str = db.Column(db.String(345), unique=True)
+  password:str = db.Column(db.String(72), nullable=False)
+  fname: str = db.Column(db.String(50), nullable=False)
+  lname: str = db.Column(db.String(50), nullable=False)

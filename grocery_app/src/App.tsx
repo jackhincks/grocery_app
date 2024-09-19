@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import HomeSearch from "@/pages/homeSearch";
+import LandingPage from "@/pages/LandingPage";
 import TopNavbar from "./components/TopNavbar";
 import ShopContextProvider from "./context/shop-context";
 import { Grocery, GroceryCategory } from "./shared/types";
+import PageNotFound from "./pages/PageNotFound";
+import UserContextProvider from "./context/user-context";
 
 
 function App() {
@@ -26,25 +28,31 @@ function App() {
 
   return (
       <div className="app bg-gray-20">
-        <ShopContextProvider>
-          <Router>
-            <TopNavbar handleInputChange={handleInputChange} />
-            <Routes>
-              <Route 
-                path="/" 
-                element={
-                  <HomeSearch 
-                    groceryData={groceryData}
-                    setGroceryData={setGroceryData}
-                    handleCategoryClick={handleCategoryClick}
-                    testQuery={query}
-                    testCategory={selectedCategory}
-                  />
-                } 
-              />
-            </Routes>
-          </Router>
-        </ShopContextProvider>
+        <UserContextProvider>
+          <ShopContextProvider>
+            <Router>
+              <TopNavbar handleInputChange={handleInputChange} />
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <LandingPage 
+                      groceryData={groceryData}
+                      setGroceryData={setGroceryData}
+                      handleCategoryClick={handleCategoryClick}
+                      testQuery={query}
+                      testCategory={selectedCategory}
+                    />
+                  } 
+                />
+                <Route 
+                  path="*"
+                  element={<PageNotFound />}
+                />
+              </Routes>
+            </Router>
+          </ShopContextProvider>
+        </UserContextProvider>
       </div>
   )
 }

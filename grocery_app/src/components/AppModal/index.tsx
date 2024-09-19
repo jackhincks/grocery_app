@@ -1,13 +1,13 @@
 import React from 'react';
 import { XMarkIcon } from '@heroicons/react/16/solid';
-import Cart from '../cart';
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
+  children: JSX.Element;
 }
 
-const CartModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
+const AppModal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
 
   return (
@@ -20,15 +20,15 @@ const CartModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
         onClick={(e) => e.stopPropagation()}
       >
         <button 
-          className="absolute top-2 right-2 text-gray-600 hover:text-gray-900" 
+          className="absolute top-4 right-4 text-gray-600 hover:text-gray-900" 
           onClick={onClose}
         >
-          <XMarkIcon className="h-6 w-6" />
+          <XMarkIcon className="h-10 w-10" />
         </button>
-        <Cart />
+        {children}
       </div>
     </div>
   );
 };
 
-export default CartModal;
+export default AppModal;

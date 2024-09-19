@@ -1,10 +1,12 @@
 -- Create DB within Docker container
 CREATE DATABASE IF NOT EXISTS groceries;
 USE groceries;
+SET foreign_key_checks=0;
 
 
 DROP TABLE IF EXISTS subcategories;
 DROP TABLE IF EXISTS items;
+DROP TABLE IF EXISTS users;
 
 CREATE TABLE subcategories (
   category_id INT NOT NULL AUTO_INCREMENT,
@@ -20,6 +22,15 @@ CREATE TABLE items (
   price DECIMAL(18, 2) NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (category_id) REFERENCES subcategories(category_id)
+);
+
+CREATE TABLE users (
+  user_id VARCHAR(32) NOT NULL UNIQUE,
+  email VARCHAR(345) NOT NULL UNIQUE,
+  password VARCHAR(72) NOT NULL,
+  fname VARCHAR(50) NOT NULL,
+  lname VARCHAR(50) NOT NULL,
+  PRIMARY KEY (user_id)
 );
 
 INSERT INTO subcategories (name)
@@ -62,3 +73,4 @@ VALUES
 ("Arnold Palmer", 10, "ArnoldPalmer.webp", 0.99),
 ("Bud Light - 12ct - 12oz", 11, "BudLight.webp", 16.99);
 
+SET foreign_key_checks = 1;

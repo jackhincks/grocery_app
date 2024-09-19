@@ -14,6 +14,11 @@ export enum GroceryCategory {
   Coffee="coffee"
 };
 
+export enum AuthMode {
+  SignIn="SIGN_IN",
+  SignUp="SIGN_UP"
+}
+
 export interface GroceryButton {
    image: string
    description: string
@@ -43,4 +48,19 @@ export interface CartModifier {
   addToCart: (grocery: Grocery) => void;
   removeFromCart: (grocery: Grocery) => void;
   deleteFromCart: (grocery: Grocery) => void;
+}
+
+export interface User {
+  userID: string,
+  userEmail: string,
+  userFN: string,
+  userLN: string
+}
+
+export interface UserModifier {
+  user: User | null,
+  loading: boolean,
+  setAuthorizedUser: (user: User) => void,
+  signOutAuthorizedUser: () => Promise<void>
+
 }

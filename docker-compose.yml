@@ -18,6 +18,7 @@ services:
       - att-network
     ports:
       - 3306:3306
+
 ### Flask Container
   backend:
     container_name: att_backend
@@ -36,6 +37,17 @@ services:
       - att-network
     depends_on:
       - mysql
+      - redis
+
+### redis container      
+  redis:
+    container_name: redis
+    image: "redis:latest"
+    ports:
+      - "6379:6379"
+    networks:
+      - att-network
+    
 ### Frontend
   frontend:
     container_name: att_frontend
