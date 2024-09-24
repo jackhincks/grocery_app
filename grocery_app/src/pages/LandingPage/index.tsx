@@ -1,20 +1,32 @@
 import { Grocery, GroceryCategory } from "@/shared/types";
 import CategorySlider from "@/components/categorySlider";
 import GroceryTable from "./groceryTable";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import PageSelection from "@/components/PageSelection";
 
 const apiHost = import.meta.env.VITE_BACKEND_HOST || 'localhost';
 const apiPort = import.meta.env.VITE_BACKEND_PORT || 5001;
-const filePath = '';
+const filePath = 'getItems';
 
-const fetchGroceries = async (query: string, category: GroceryCategory, setGroceryData: React.Dispatch<React.SetStateAction<Grocery[]>>) => {
+interface GroceriesResponse {
+  groceries: Grocery[];
+  totalPages: number;
+}
+
+const fetchGroceries = async (page: number, query: string, category: GroceryCategory, setGroceryData: React.Dispatch<React.SetStateAction<Grocery[]>>, setTotalPages:React.Dispatch<React.SetStateAction<number>> ) => {
   try {
-    const res: Response = await fetch(`http://${apiHost}:${apiPort}/${filePath}?query=${query}&category=${category}`);
+    const res: Response = await fetch(`http://${apiHost}:${apiPort}/${filePath}?page=${page}&query=${query}&category=${category}`);
     if (!res.ok) {
       throw new Error(`Response status: ${res.status}`);
     }
-    const json: Grocery[] = await res.json();
-    setGroceryData(json);
+    const json: GroceriesResponse = await res.json();
+
+    const groceries: Grocery[] = json.groceries
+    const pages: number = json.totalPages
+    
+    // Establish total pages of search query to be used for page nav below
+    setTotalPages(pages); 
+    setGroceryData(groceries);
     
   } catch (error: any) {
     console.log(error.message)
@@ -30,9 +42,26 @@ type Props = {
 }
 
 const LandingPage = ({ groceryData, setGroceryData, handleCategoryClick, testQuery, testCategory }: Props) => {
+  const [ page, setPage ] = useState(1);
+  const [ totalPages, setTotalPages ] = useState(0); 
+  let currentQuery = ""
+  let currentCategory = GroceryCategory.All
+  
+
   useEffect(() => {
-    fetchGroceries(testQuery, testCategory, setGroceryData);
-  }, [testQuery, testCategory]);
+    console.log("UseEffect triggered!")
+    // Conditional is TRUE if query and category have not changed - this means only page has changed
+    if ( testQuery === currentQuery && testCategory === currentCategory ) {
+      fetchGroceries(page, testQuery, testCategory, setGroceryData, setTotalPages);
+    } 
+    // If query or category has changed, the search results are a different pool, so page must be reset to 1
+    else {
+      setPage(1)
+      fetchGroceries(page, testQuery, testCategory, setGroceryData, setTotalPages);
+      currentQuery = testQuery
+      currentCategory = testCategory
+    }
+  }, [testQuery, testCategory, page]);
 
   return (
     <div className="bg-inherit">
@@ -40,10 +69,12 @@ const LandingPage = ({ groceryData, setGroceryData, handleCategoryClick, testQue
       <section className="bg-inherit">
           {/* CONTAINER FOR ALL SEARCH RESULTS */}
           <div
-            className="mx-auto grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg: max-w-[80%] align-middle justify-center"
+            className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg: max-w-[80%] mx-auto"
           >
             <GroceryTable groceries={groceryData} />
           </div>
+          {/* PAGE */}
+          <PageSelection setPage={setPage} page={page} totalPages={totalPages}/>
       </section>
     </div>
   )

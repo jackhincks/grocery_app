@@ -16,5 +16,5 @@ class ApplicationConfig:
   SESSION_TYPE = "redis"
   SESSION_PERMANENT = False
   SESSION_USE_SIGNER = True
-  SESSION_REDIS = redis.StrictRedis(host='redis', port=6379)
+  SESSION_REDIS = redis.StrictRedis(host=os.getenv('REDIS_HOST'), port=6379)
   

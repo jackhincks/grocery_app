@@ -10,16 +10,24 @@ def register_routes(app: Flask, db: SQLAlchemy):
   bcrypt = Bcrypt(app)
   server_session = Session(app)
   
-  @app.route('/')
+  @app.route('/getItems')
   def index():
+    page = int(request.args.get('page'))
     query = request.args.get('query')
     category = request.args.get('category')
 
     if category == 'all' or category == None:
-      groceries = Item.query.filter(Item.name.like(f"%{query}%")).all()
+      groceries = (Item.query
+                   .filter(Item.name.like(f"%{query}%"))
+                   .paginate(page=page, per_page=8, error_out=False)
+      )
     else:
-      groceries = Item.query.join(Subcategory).filter(Item.name.like(f"%{query}%"), Subcategory.name == category).all()
-    return jsonify(groceries)
+      groceries = (Item.query
+                   .join(Subcategory)
+                   .filter(Item.name.like(f"%{query}%"), Subcategory.name == category)
+                   .paginate(page=page, per_page=8, error_out=False)
+      )
+    return jsonify({"groceries": groceries.items, "totalPages": groceries.pages})
   
   # Returns meta data about logged in user
   @app.route("/@me")
