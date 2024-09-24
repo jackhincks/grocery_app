@@ -32,7 +32,8 @@ services:
       DB_PASSWORD: pass
       DB_PORT: 3306
       REDIS_HOST: redis
-      SECRET_KEY: 8abb5f7221056060d7ecdf3f6e3ee31cca55beb9a4eb8157e9f8573db8439320
+      SECRET_KEY: [ run "openssl rand -base64 64" to create a secret key ]
+
     ports:
       - "5001:5001"
     networks:
