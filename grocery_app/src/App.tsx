@@ -40,8 +40,8 @@ function App() {
                       groceryData={groceryData}
                       setGroceryData={setGroceryData}
                       handleCategoryClick={handleCategoryClick}
-                      testQuery={query}
-                      testCategory={selectedCategory}
+                      query={query}
+                      selectedCategory={selectedCategory}
                     />
                   } 
                 />
