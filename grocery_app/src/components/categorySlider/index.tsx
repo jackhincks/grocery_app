@@ -121,7 +121,7 @@ const CategorySlider = ({ handleCategoryClick }: Props) => {
     >
       {/* SIDE SCROLLER */}
       <div className="pt-6 h-40 w-full justify-center">
-          <ul className="flex justify-start mx-auto w-[80%] h-[90px] whitespace-nowrap overflow-x-auto overflow-y-hidden bg-primary-100 shadow-2xl"
+          <ul className="flex justify-start mx-auto w-[80%] h-[90px] whitespace-nowrap overflow-x-auto overflow-y-hidden bg-white shadow-2xl border-2 rounded-md"
             ref={scrollContainerRef}
           >
             {groceries.map((item: GroceryButton, index) => (

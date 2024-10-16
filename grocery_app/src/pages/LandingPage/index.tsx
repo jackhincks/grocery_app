@@ -15,7 +15,7 @@ type Props = {
 
 const LandingPage = ({ groceryData, setGroceryData, handleCategoryClick, query, selectedCategory }: Props) => {
   const [ page, setPage ] = useState(1);
-  const [ totalPages, setTotalPages ] = useState(0); 
+  const [ totalPages, setTotalPages ] = useState(0);
 
   useEffect(() => {
     setPage(1)
